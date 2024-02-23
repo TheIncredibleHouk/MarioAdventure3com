@@ -3,6 +3,7 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   build-website:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,5 +13,14 @@ jobs:
       - run: npm i
       - run: npm run build
   deploy-website:
-    runs-on:
+    name: deploy
+    needs: build-website
+    runs-on: ubuntu-latest
+    uses: cloudflare/pages-action@1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: marioadventure3.com
+        directory: build
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}    
     

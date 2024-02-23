@@ -16,11 +16,12 @@ jobs:
     name: deploy
     needs: build-website
     runs-on: ubuntu-latest
-    uses: cloudflare/pages-action@1
-      with:
-        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        projectName: marioadventure3.com
-        directory: build
-        gitHubToken: ${{ secrets.GITHUB_TOKEN }}    
+    steps:
+      - uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: marioadventure3.com
+          directory: build
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}    
     

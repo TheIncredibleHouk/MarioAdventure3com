@@ -21,7 +21,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: marioadventure3com
+          projectName: 'marioadventure3.com'
           directory: build
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}    
     
